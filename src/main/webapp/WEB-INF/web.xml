@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="
+         http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd
+         ">
+    <display-name>Archetype Created Web Application</display-name>
+
+    <!--servlet-->
+    <!--tomcatn内置了一个default servlet, 对于的mapping默认是.jsp, default servlet的默认等级最高, 而且不会进入controller。-->
+    <!--也就是说通过dispatcher servlet, 最终一定映射后的url要转到default servlet, 不然就在dispatcher servlet里不停循环了。-->
+
+    <!--default servlet-->
+    <!--default servlet-mapping追加一个静态文件目录, 这样出了.jsp, 此目录下的静态资源便不会走dispatcher。-->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/web-resources/*</url-pattern>
+    </servlet-mapping>
+
+    <!--dispatcher servlet: springmvc的主分发器, 进而交给各个controller, 进行映射静态文件url或数据处理-->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:applicationContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--直接输入 ip:端口 地址的话，后再后面追加welcome-file-->
+    <!--如没有设置welcome-file, 则追加/index.jsp-->
+    <welcome-file-list>
+        <welcome-file>web-resources/login.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
