@@ -17,6 +17,16 @@ public class ProductService {
 
     public List<Product> getProductList(){
         return productDao.selectList();
+    }
 
+    public void add(Product p) {
+        productDao.add(p);
+    }
+    public void update(Product p) {
+        productDao.update(p);
+    }
+
+    public Product get(int id) {
+        return productDao.get(id);
     }
 }

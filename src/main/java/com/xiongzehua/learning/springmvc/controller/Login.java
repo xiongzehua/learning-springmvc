@@ -15,7 +15,7 @@ public class Login {
     public String login(@RequestParam("account") String account, @RequestParam("password") String password) {
 
         if ("admin".equals(account) && "123456".equals(password))
-            return "/web-resources/productlist.html";
+            return "/web-resources/welcome.html";
         else
             return "/web-resources/login_error.html";
     }

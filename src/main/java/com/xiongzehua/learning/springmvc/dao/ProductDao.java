@@ -1,5 +1,6 @@
 package com.xiongzehua.learning.springmvc.dao;
 
+import com.xiongzehua.learning.springmvc.pojo.Person;
 import com.xiongzehua.learning.springmvc.pojo.Product;
 import org.springframework.stereotype.Repository;
 
@@ -25,5 +26,25 @@ public class ProductDao {
     }
     public List<Product> selectList(){
         return list;
+    }
+
+    public void add(Product p){
+        p.setId(id++);
+        list.add(p);
+    }
+
+    public Product get(int id){
+        for (Product p : list) {
+            if (p.getId() == id)
+                return p;
+        }
+        return null;
+    }
+
+    public void update(Product p){
+        for (int i = 0; i < list.size(); i++) {
+            if (p.getId() == list.get(i).getId())
+                list.set(i, p);
+        }
     }
 }
