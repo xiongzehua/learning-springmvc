@@ -9,6 +9,9 @@ public class Product {
     int price;
     int stock;
 
+    public Product() {
+        //要保留无参构造函数，不然 @ResponseBody无法直接使用Product作为接受表单的类型
+    }
     public Product(int id, String name, int price, int stock) {
         this.id = id;
         this.name = name;
@@ -46,5 +49,15 @@ public class Product {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                '}';
     }
 }

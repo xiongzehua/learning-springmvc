@@ -22,11 +22,16 @@ public class ProductService {
     public void add(Product p) {
         productDao.add(p);
     }
+
     public void update(Product p) {
         productDao.update(p);
     }
 
     public Product get(int id) {
         return productDao.get(id);
+    }
+
+    public void delete(int id) {
+        productDao.delete(id);
     }
 }

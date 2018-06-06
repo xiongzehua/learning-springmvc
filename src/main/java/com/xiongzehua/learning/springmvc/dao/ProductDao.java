@@ -43,8 +43,17 @@ public class ProductDao {
 
     public void update(Product p){
         for (int i = 0; i < list.size(); i++) {
-            if (p.getId() == list.get(i).getId())
+            if (p.getId() == list.get(i).getId()) {
                 list.set(i, p);
+            }
+        }
+    }
+
+    public void delete(int id){
+        for (int i = 0; i < list.size(); i++) {
+            if (id == list.get(i).getId()) {
+                list.remove(i);
+            }
         }
     }
 }

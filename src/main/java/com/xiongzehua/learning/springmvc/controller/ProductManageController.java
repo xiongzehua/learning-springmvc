@@ -29,10 +29,10 @@ public class ProductManageController {
     }
 
     @RequestMapping("/add")
+    @ResponseBody
     public void add(String name, int price, int stock) {
         productService.add(new Product(0, name, price, stock));
         System.out.println("into /manage/product/add");
-
     }
 
     @RequestMapping("/get")
@@ -45,7 +45,14 @@ public class ProductManageController {
     @RequestMapping("/update")
     @ResponseBody
     public void add(Product p) {
-        productService.update(p);
         System.out.println("into /manage/product/update");
+        productService.update(p);
+    }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public void delete(int id) {
+        System.out.println("into /manage/product/delete");
+        productService.delete(id);
     }
 }
