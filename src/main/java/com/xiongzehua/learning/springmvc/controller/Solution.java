@@ -3,7 +3,7 @@ package com.xiongzehua.learning.springmvc.controller;
 import java.util.Arrays;
 
 /**
- * Created by 31339 on 2018/5/29.
+ * Created by xiongzehua on 2018/5/29.
  * 分析： x像这种时间复杂度超过 O(N^2) 的问题，一般都是多个指针，嵌套遍历多次。
  * 这时候可以考虑如下思路：
  * 1. 利用HashSet降低一个阶层的时间复杂度。

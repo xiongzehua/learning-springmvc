@@ -4,7 +4,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 /**
- * Created by 31339 on 2018/6/2.
+ * Created by xiongzehua on 2018/6/2.
  */
 public class Main {
     public static void main(String[] args) {

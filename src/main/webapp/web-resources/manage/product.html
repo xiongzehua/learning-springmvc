@@ -10,7 +10,6 @@
 <body>
     <div id="product" class="container">
         <h2>商品信息</h2>
-        <button class="btn btn-primary" v-on:click="doProductList">获得商品列表</button>
         <br>
 
         <table class="table">
@@ -24,7 +23,8 @@
             </thead>
             <tbody>
             <tr v-for="p in productList">
-                <th scope="row">{{p.id}}</th>
+                <!--for(Prodyct p : productList)-->
+                <td>{{p.id}}</td>
                 <td>{{p.name}}</td>
                 <td>{{p.price}}</td>
                 <td>{{p.stock}}</td>
@@ -32,6 +32,8 @@
 
             </tbody>
         </table>
+        <button class="btn btn-primary" v-on:click="doProductList">刷新</button>
+        <span class="text-success"> {{info.List}}</span>
 
         <br>
         <hr>
@@ -42,19 +44,19 @@
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">商品名称</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" v-model="productAdd.name" required="" v-on:focus="didProductAdd">
+                <input type="text" class="form-control" id="name" v-model="productAdd.name" required="" v-on:focus="willProductAdd">
             </div>
         </div>
         <div class="form-group row">
             <label for="price" class="col-sm-2 col-form-label">商品价格</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="price" v-model="productAdd.price" required="" v-on:focus="didProductAdd">
+                <input type="text" class="form-control" id="price" v-model="productAdd.price" required="" v-on:focus="willProductAdd">
             </div>
         </div>
         <div class="form-group row">
             <label for="stock" class="col-sm-2 col-form-label">商品库存</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="stock" v-model="productAdd.stock" required="" v-on:focus="didProductAdd">
+                <input type="text" class="form-control" id="stock" v-model="productAdd.stock" required="" v-on:focus="willProductAdd">
             </div>
         </div>
         <button class="btn btn-primary" v-on:click="doProductAdd">提交</button>
@@ -69,14 +71,14 @@
         <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">待编辑商品id</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="id" v-model="productIdGet" required="" v-on:focus="didProductAdd">
+                <input type="text" class="form-control" id="id" v-model="productIdGet" v-on:focus="willProductUpdate">
             </div>
         </div>
         <button class="btn btn-primary" v-on:click="doProductGet">确定</button>
+        <span class="text-success"> {{infoProductUpdate}}</span>
         <br>
         <br>
 
-        <span class="text-success"> {{infoProductUpdate}}</span>
         <div v-if="visibleProductUpdate">
             <h2>该商品原有信息如下</h2>
             <br>

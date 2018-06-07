@@ -13,8 +13,10 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import java.util.List;
 
 /**
- * Created by 31339 on 2018/5/31.
+ * Created by xiongzehua on 2018/5/31.
  */
+
+
 @Controller
 @RequestMapping("/manage/product")
 public class ProductManageController {
@@ -23,13 +25,14 @@ public class ProductManageController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public List<Product> list() {
+    public List<Product> list() throws InterruptedException {
         System.out.println("into /manage/product/list");
+//        Thread.sleep(9000);
         return productService.getProductList();
     }
 
     @RequestMapping("/add")
-    @ResponseBody
+    @ResponseBody //404 Not Found
     public void add(String name, int price, int stock) {
         productService.add(new Product(0, name, price, stock));
         System.out.println("into /manage/product/add");

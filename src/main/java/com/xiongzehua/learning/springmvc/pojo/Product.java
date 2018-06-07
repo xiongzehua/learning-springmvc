@@ -1,7 +1,7 @@
 package com.xiongzehua.learning.springmvc.pojo;
 
 /**
- * Created by 31339 on 2018/6/1.
+ * Created by xiongzehua on 2018/6/1.
  */
 public class Product {
     int id;

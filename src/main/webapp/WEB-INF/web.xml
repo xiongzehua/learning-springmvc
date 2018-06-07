@@ -39,6 +39,7 @@
     <!--直接输入 ip:端口 地址的话，后再后面追加welcome-file-->
     <!--如没有设置welcome-file, 则追加/index.jsp-->
     <welcome-file-list>
+        <!--切记这里开头不能写/，即不能写出/web-resources..-->
         <welcome-file>web-resources/login.html</welcome-file>
     </welcome-file-list>
 

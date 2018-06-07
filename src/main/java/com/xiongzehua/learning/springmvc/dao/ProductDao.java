@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 31339 on 2018/6/1.
+ * Created by xiongzehua on 2018/6/1.
  */
 @Repository
 public class ProductDao {

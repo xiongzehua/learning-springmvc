@@ -3,7 +3,7 @@ package com.xiongzehua.learning.springmvc.pojo;
 import java.util.List;
 
 /**
- * Created by 31339 on 2018/5/11.
+ * Created by xiongzehua on 2018/5/11.
  */
 public class Person {
     private String name;
