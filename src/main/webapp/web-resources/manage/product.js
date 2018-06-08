@@ -12,23 +12,28 @@ const product = new Vue({
         productUpdate: {},
         productIdGet: undefined,
 
-        infoProductList: undefined,
-        infoProductAdd: undefined,
-        infoProductUpdate: undefined,
         visibleProductUpdate: false,
         info: {},
     },
     mounted: function() {
+        //新增属性事要用 Vue set一下
+        //不然在回调函数中会出现数据更新，视图不更新的问题
+        Vue.set(this.info, "list", "");
+        Vue.set(this.info, "add", "");
+        Vue.set(this.info, "update", "");
+
         this.doProductList();
+
+        //第一次不显示查询成功
+        this.info.list = "";
     },
     methods: {
         doProductList: function(){
             console.log("进入 doProductList");
             console.log("发起请求，异步等待response");
 
-            this.info.List = "查询成功";
-            //this.infoDelay2s("List");
-            this.info["List"]="";
+            this.info.list = "查询成功";
+            this.infoDelay2s("list");
 
             axios.get(url_productList)
             .then(response => {
@@ -51,8 +56,8 @@ const product = new Vue({
 
             axios.post(url_productAdd, params)
             .then(response => {
-                this.infoProductAdd = "添加成功";
-                this.infoDelay2s(this.infoProductAdd);
+                this.info.add = "添加成功";
+                this.infoDelay2s("add");
                 console.log(response);})
             .catch(function (error) {
                 console.log(error);});
@@ -61,9 +66,6 @@ const product = new Vue({
                 this.productAdd[key] = undefined;
             }
             console.log("退出 doProductAdd");
-        },
-        willProductAdd: function(){
-            this.infoProductAdd = undefined;
         },
 
         doProductGet: function() {
@@ -83,9 +85,6 @@ const product = new Vue({
 
             console.log("退出 doProductGet");
         },
-        willProductUpdate: function () {
-            infoProductUpdate = undefined;
-        },
 
         doProductUpdate: function(){
             console.log("进入 doProductUpdate");
@@ -97,8 +96,8 @@ const product = new Vue({
 
             axios.post(url_productUpdate, params)
             .then(response => {
-                this.infoProductUpdate = "更改成功";
-                this.infoDelay2s(this.infoProductUpdate);
+                this.info.update = "更改成功";
+                this.infoDelay2s("update");
                 this.productUpdate = {};
                 this.visibleProductUpdate = false;
                 this.productIdGet = undefined;
@@ -116,8 +115,8 @@ const product = new Vue({
 
             axios.post(url_productDelete, params)
             .then(response => {
-                this.infoProductUpdate = "删除成功";
-                this.infoDelay2s(this.infoProductUpdate);
+                this.info.update = "删除成功";
+                this.infoDelay2s("update");
                 this.productUpdate = {};
                 this.visibleProductUpdate = false;
                 this.productIdGet = undefined;
@@ -130,12 +129,7 @@ const product = new Vue({
 
         infoDelay2s: function(name) {
             setTimeout(() => {
-                console.log("info:" + name + " " + this.info[name]);
-                //Vue.set(this.info, name, "");
-                //this.$set(this.info, name, "");
-                //this.info[name]=undefined;
-                this.info.List="";
-                console.log("info:" + name + " " + this.info[name]);
+                this.info[name] = "";
             }, 2000);
         },
 
