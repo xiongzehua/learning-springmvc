@@ -14,12 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class Login {
     /**
      *
-     * @param account
-     * @param password
-     * @return
+     * @param account 账号
+     * @param password 密码
+     * @return 静态资源地址
      */
     @RequestMapping("/login")
-    //使用@RequestParam("key")拿到post中对于的value传入注解的变量中
+    //使用@RequestParam("<key>")，获取post的form data中的<value>，并注入到@RequestParam修饰的变量中
     public String login(@RequestParam("account") String account, @RequestParam("password") String password) {
 
         if ("admin".equals(account) && "123456".equals(password))
